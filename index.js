@@ -35,15 +35,23 @@ const tasks = [
     {id: 15, title: "task15", duration: 900}
 ];
 /**
- * 1~3.
+ * 1.
  * @param {Array} factories 
- * @returns {[Q1,Q2,Q3]} result
+ * @returns {Array} result
  */
-function sloution_question_region_1(factories){
+function Q1(factories){
     let q1=[];
     factories.forEach((employe)=>{
         q1.push({name:`${employe["name"]}`,count:`${employe["employees"].length}`})
     });
+    return q1;
+}
+/**
+ * 2.
+ * @param {Array} factories 
+ * @returns {Array} result
+ */
+function Q2(factories){
     let q2=[];
     let hotkey="employe"
     factories.forEach((It)=>{
@@ -60,6 +68,9 @@ function sloution_question_region_1(factories){
             }
         });
     });
+    return q2;
+}
+function Q3(factories){
     let q3=factories;
     q3.forEach((e)=>{
         e["employees"].sort((a,b)=>{
@@ -68,9 +79,8 @@ function sloution_question_region_1(factories){
             return 0;
         });
     });
-    return [q1,q2,q3]
+    return q3;
 }
-
 /**
  * 4.
  * @param {array} employees 
