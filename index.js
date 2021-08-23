@@ -54,30 +54,34 @@ function Q1(factories){
 function Q2(factories){
     let q2=[];
     let hotkey="employe"
+    function sloution(result,answers){
+        if(result.length==0)answers.push({employe:`${employe}`,count:1});
+        else {
+            for(let i in answers){
+                if(answers[i][hotkey]==result[0][hotkey]){
+                    answers[i].count++;
+                    break;
+                }
+            }
+        }
+    }
     factories.forEach((It)=>{
         It["employees"].forEach((employe)=>{
             let result = q2.filter((e)=>e[hotkey]==employe);
-            if(result.length==0)q2.push({employe:`${employe}`,count:1});
-            else {
-                for(let i in q2){
-                    if(q2[i][hotkey]==result[0][hotkey]){
-                        q2[i].count++;
-                        break;
-                    }
-                }
-            }
+            sloution(result,q2);
         });
     });
     return q2;
 }
 function Q3(factories){
     let q3=factories;
+    function sortPolicy(a,b){
+        if(a[0].toUpperCase()>b[0].toUpperCase())return 1;
+        else if(a[0].toUpperCase()<b[0].toUpperCase())return -1;
+        return 0;
+    }
     q3.forEach((e)=>{
-        e["employees"].sort((a,b)=>{
-            if(a[0].toUpperCase()>b[0].toUpperCase())return 1;
-            else if(a[0].toUpperCase()<b[0].toUpperCase())return -1;
-            return 0;
-        });
+        e["employees"].sort(sortPolicy);
     });
     return q3;
 }
@@ -102,15 +106,24 @@ function totalHoursWorked(employees){
 function howManyEmployeeByTime(time){
     let counter=0;
     if(time<=8||time<=4||time==9)return 1;
-    function n(time){
+    function parseHowManyFullTimeEmployee(time){
         if(time%9){
             counter++;
             return n(time-=4);
         }
         else return time;
     }
-    let result = n(time,counter);
-    return (result/9)+(counter%2)+(parseInt(counter/2))
+    let result = parseHowManyFullTimeEmployee(time,counter);
+    function midTime(times){
+        return times/9;
+    }
+    function helfTime(sets){
+        return sets%2;
+    }
+    function fullTime(sets){
+        return parseInt(sets/2);
+    }
+    return midTime(result)+helfTime(counter)+fullTime(counter);
 }
 /**
  * 6.
