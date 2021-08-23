@@ -73,6 +73,11 @@ function Q2(factories){
     });
     return q2;
 }
+/**
+ * 3.
+ * @param {Array} factories 
+ * @returns {Array} result
+ */
 function Q3(factories){
     let q3=factories;
     function sortPolicy(a,b){
@@ -87,8 +92,8 @@ function Q3(factories){
 }
 /**
  * 4.
- * @param {array} employees 
- * @returns 
+ * @param {Array} employees 
+ * @returns {number} totalHoursWorked
  */
 function totalHoursWorked(employees){
     const workType=[8,9,4];
@@ -101,7 +106,7 @@ function totalHoursWorked(employees){
 /**
  * 5.
  * @param {number} time
- * @returns {int}
+ * @returns {number} 
  */
 function howManyEmployeeByTime(time){
     let counter=0;
@@ -128,7 +133,7 @@ function howManyEmployeeByTime(time){
 /**
  * 6.
  * @param {[{id:number,title:string,duration:int}]} tasks 
- * @returns 
+ * @returns {number}
  */
 function taskDoneTime(tasks){
     let totalTime = 0;
