@@ -41,18 +41,18 @@ const tasks = [
  */
 function sloution_question_region_1(factories){
     let q1=[];
-    factories.forEach((e)=>{
-        q1.push({name:`${e["name"]}`,count:`${e["employees"].length}`})
+    factories.forEach((employe)=>{
+        q1.push({name:`${employe["name"]}`,count:`${employe["employees"].length}`})
     });
     let q2=[];
     let hotkey="employe"
     factories.forEach((It)=>{
-        It["employees"].forEach((emp)=>{
-            let r = q2.filter((e)=>e[hotkey]==emp);
-            if(r.length==0)q2.push({employe:`${emp}`,count:1});
+        It["employees"].forEach((employe)=>{
+            let result = q2.filter((e)=>e[hotkey]==employe);
+            if(result.length==0)q2.push({employe:`${employe}`,count:1});
             else {
                 for(let i in q2){
-                    if(q2[i][hotkey]==r[0][hotkey]){
+                    if(q2[i][hotkey]==result[0][hotkey]){
                         q2[i].count++;
                         break;
                     }
@@ -79,8 +79,8 @@ function sloution_question_region_1(factories){
 function totalHoursWorked(employees){
     const workType=[8,9,4];
     let total=0;
-    employees.forEach((e)=>{
-        total +=(workType[e.type-1]);
+    employees.forEach((employe)=>{
+        total +=(workType[employe.type-1]);
     });
     return total;
 }
@@ -109,8 +109,8 @@ function howManyEmployeeByTime(time){
  */
 function taskDoneTime(tasks){
     let totalTime = 0;
-    tasks.forEach((e)=>{
-        totalTime+=e.duration;
+    tasks.forEach((task)=>{
+        totalTime+=task.duration;
     })
     return parseInt(totalTime/60/15)+1;
 }
